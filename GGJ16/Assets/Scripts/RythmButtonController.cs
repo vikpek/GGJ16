@@ -22,11 +22,13 @@ public class RythmButtonController : MonoBehaviour {
 	[SerializeField]
 	float delayMiss;
 
+	float timeLeft;
+
 	void Start () {
 		b = GetComponent<Button> ();
 		status = RythmButtonStatus.Passive;	
 		ActivateRythmButton ();
-		b.image.color = Color.grey;
+
 	}
 
 	public void ActivateRythmButton(){
@@ -38,14 +40,18 @@ public class RythmButtonController : MonoBehaviour {
 
 		b.image.color = Color.green;
 		yield return new WaitForSeconds(delayPerfect);
-		StartCoroutine (GreatToOk ());
+		if (status != RythmButtonStatus.Passive) {
+			StartCoroutine (GreatToOk ());
+		}
 	}
 
 	IEnumerator GreatToOk() {
 		b.image.color = Color.yellow;
 		status = RythmButtonStatus.Great;
 		yield return new WaitForSeconds(delayGreat);
-		StartCoroutine (OkToMiss ());
+		if (status != RythmButtonStatus.Passive) {
+			StartCoroutine (OkToMiss ());
+		}
 
 	}
 
@@ -53,7 +59,9 @@ public class RythmButtonController : MonoBehaviour {
 		b.image.color = Color.red;
 		status = RythmButtonStatus.Ok;
 		yield return new WaitForSeconds(delayOk);
-		StartCoroutine (MissToPassive ());
+		if (status != RythmButtonStatus.Passive) {
+			StartCoroutine (MissToPassive ());
+		}
 	}
 	
 	IEnumerator MissToPassive() {
@@ -65,5 +73,7 @@ public class RythmButtonController : MonoBehaviour {
 
 	public void TappedRythmButton(){
 		print (status);
+		status = RythmButtonStatus.Passive;
+		b.image.color = Color.grey;
 	}
 }
