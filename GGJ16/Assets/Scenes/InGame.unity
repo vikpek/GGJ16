@@ -202,15 +202,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22432386, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -24.408226
       objectReference: {fileID: 0}
     - target: {fileID: 22451572, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 59.261757
       objectReference: {fileID: 0}
     - target: {fileID: 22470310, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 92.79747
       objectReference: {fileID: 0}
     - target: {fileID: 22408072, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
       propertyPath: m_SizeDelta.x
@@ -240,8 +240,32 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 353.64075
       objectReference: {fileID: 0}
-    - target: {fileID: 22408072, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+    - target: {fileID: 22416094, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.335
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416094, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416094, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416094, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.405
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22421660, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
@@ -249,36 +273,16 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11481986, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_FontData.m_VerticalOverflow
-      value: 0
+      propertyPath: m_FontData.m_FontSize
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11481986, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
+      propertyPath: m_FontData.m_MinSize
+      value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 11434344, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11434344, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_FontData.m_VerticalOverflow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.985
-      objectReference: {fileID: 0}
-    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22494044, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.945
+    - target: {fileID: 11481986, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
