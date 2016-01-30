@@ -6,33 +6,33 @@ public class RythmButtonController : MonoBehaviour {
 
 	public enum RythmButtonStatus{Passive, Premature, Perfect, Great, Ok, Miss};
 
-	private RythmButtonStatus Status;
+	private RythmButtonStatus _status;
 
-	private Button RythmButton;
-
-	[SerializeField]
-	private float DelayPremature;
+	private Button _rythmButton;
 
 	[SerializeField]
-	private float DelayPerfect;
+	private float _delayPremature;
 
 	[SerializeField]
-	private float DelayGreat;
+	private float _delayPerfect;
 
 	[SerializeField]
-	private float DelayOk;
+	private float _delayGreat;
 
 	[SerializeField]
-	private float DelayMiss;
+	private float _delayOk;
 
-	private float TimeLeft;
+	[SerializeField]
+	private float _delayMiss;
 
 	[SerializeField]
 	private GameObject IndicatorRing;
 
+	private float _timeLeft;
+
 	void Start () {
-		RythmButton = GetComponent<Button> ();
-		Status = RythmButtonStatus.Passive;	
+		_rythmButton = GetComponent<Button> ();
+		_status = RythmButtonStatus.Passive;	
 	}
 
 	public void ActivateRythmButton(){
@@ -46,15 +46,15 @@ public class RythmButtonController : MonoBehaviour {
 	/// <returns>The to perfect.</returns>
 	IEnumerator PrematureToPerfect() {
 
-		Status = RythmButtonStatus.Premature;
+		_status = RythmButtonStatus.Premature;
 
 		GameObject circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, transform.rotation);
 //		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = DelayPremature;
 		circleIndicator.transform.parent = transform;
 
 
-		yield return new WaitForSeconds(DelayPremature);
-		if (Status != RythmButtonStatus.Passive) {
+		yield return new WaitForSeconds(_delayPremature);
+		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (PerfectToGreat ());
 		}
 	}
@@ -65,11 +65,11 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to great.</returns>
 	IEnumerator PerfectToGreat() {
-		Status = RythmButtonStatus.Perfect;
+		_status = RythmButtonStatus.Perfect;
 
-		RythmButton.image.color = Color.green;
-		yield return new WaitForSeconds(DelayPerfect);
-		if (Status != RythmButtonStatus.Passive) {
+		_rythmButton.image.color = Color.green;
+		yield return new WaitForSeconds(_delayPerfect);
+		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (GreatToOk ());
 		}
 	}
@@ -79,10 +79,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to ok.</returns>
 	IEnumerator GreatToOk() {
-		RythmButton.image.color = Color.yellow;
-		Status = RythmButtonStatus.Great;
-		yield return new WaitForSeconds(DelayGreat);
-		if (Status != RythmButtonStatus.Passive) {
+		_rythmButton.image.color = Color.yellow;
+		_status = RythmButtonStatus.Great;
+		yield return new WaitForSeconds(_delayGreat);
+		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (OkToMiss ());
 		}
 
@@ -93,10 +93,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to miss.</returns>
 	IEnumerator OkToMiss() {
-		RythmButton.image.color = Color.red;
-		Status = RythmButtonStatus.Ok;
-		yield return new WaitForSeconds(DelayOk);
-		if (Status != RythmButtonStatus.Passive) {
+		_rythmButton.image.color = Color.red;
+		_status = RythmButtonStatus.Ok;
+		yield return new WaitForSeconds(_delayOk);
+		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (MissToPassive ());
 		}
 	}
@@ -106,19 +106,20 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to passive.</returns>
 	IEnumerator MissToPassive() {
-		Status = RythmButtonStatus.Miss;
-		RythmButton.image.color = Color.grey;
-		yield return new WaitForSeconds(DelayMiss);
-		Status = RythmButtonStatus.Passive;
+		_status = RythmButtonStatus.Miss;
+		_rythmButton.image.color = Color.grey;
+		yield return new WaitForSeconds(_delayMiss);
+		_status = RythmButtonStatus.Passive;
 	}
 
 	/// <summary>
 	/// Tappeds the rythm button.
 	/// </summary>
 	public void TappedRythmButton(){
-		print (Status);
-		Status = RythmButtonStatus.Passive;
-		RythmButton.image.color = Color.grey;
+		print (_status);
+		_status = RythmButtonStatus.Passive;
+		_rythmButton.image.color = Color.grey;
+		ScoreManager.Instance.SendScore (_status);
 	}
 
 	/// <summary>
@@ -127,6 +128,6 @@ public class RythmButtonController : MonoBehaviour {
 	/// <returns>The rythm status.</returns>
 	public RythmButtonStatus GetRythmStatus()
 	{
-		return Status;
+		return _status;
 	}
 }
