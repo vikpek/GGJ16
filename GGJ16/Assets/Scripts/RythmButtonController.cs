@@ -104,10 +104,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	public void TappedRythmButton(){
 		print (_status);
-		_status = RythmButtonStatus.Passive;
+        ScoreManager.Instance.SendScore(_status);
+        _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
 		Destroy (circleIndicator);
-		ScoreManager.Instance.SendScore (_status);
 	}
 
 	/// <summary>

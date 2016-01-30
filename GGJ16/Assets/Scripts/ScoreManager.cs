@@ -127,7 +127,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Calculate final score for notes
-        float scoreMultiplier = Mathf.Min(GameModel.Instance.Combo, _maxComboMultiplier) * _comboScoreMultiplier;
+        float scoreMultiplier = 1f + Mathf.Min(GameModel.Instance.Combo, _maxComboMultiplier) * _comboScoreMultiplier;
         int finalScore = (int)(baseScore * scoreMultiplier);
 
         // Return score
