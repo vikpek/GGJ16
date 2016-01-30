@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameModel
+public class GameModel : MonoBehaviour
 {
     [SerializeField]
     private int MaxLife = 100;
@@ -57,9 +57,9 @@ public class GameModel
         get { return _creatureLevel; }
         set
         {
-            if (OnCreatureLevel != null)
+            if (OnCreaturelevelChanged != null)
             {
-                OnCreatureLevel(_score, value);
+                OnCreaturelevelChanged(_score, value);
             }
             _creatureLevel = value;
         }
@@ -110,7 +110,7 @@ public class GameModel
     public event LifeChanged OnLifeChanged;
 
     public delegate void CreatureLevelChanged(int oldLevel, int newLevel);
-    public event CreatureLevelChanged OnCreatureLevel;
+    public event CreatureLevelChanged OnCreaturelevelChanged;
 
     public delegate void ExperiencePointsChanged(int oldExp, int newExp, float expPercentage);
     public event ExperiencePointsChanged OnExperiencePointsChanged;
@@ -119,28 +119,32 @@ public class GameModel
     #region Singleton
     private static GameModel instance = null;
 
-    private GameModel()
-    {
-
-    }
-
+    // Game Instance Singleton
     public static GameModel Instance
     {
         get
         {
-            if (instance == null)
-            {
-                instance = new GameModel();
-            }
             return instance;
         }
     }
-    #endregion
 
-    public void Init()
+    private void Awake()
+    {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Start()
     {
         Reset();
     }
+    #endregion
 
     public void Reset()
     {
