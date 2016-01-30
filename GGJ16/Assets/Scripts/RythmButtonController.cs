@@ -43,7 +43,7 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to great.</returns>
 	IEnumerator OkToGreat() {
-		_status = RythmButtonStatus.Perfect;
+		_status = RythmButtonStatus.Ok;
 
 		circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
 		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = (_delayPerfect + _delayGreat + _delayOk) * 0.0004f;
@@ -76,7 +76,7 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to miss.</returns>
 	IEnumerator PerfectToMiss() {
-		_status = RythmButtonStatus.Ok;
+		_status = RythmButtonStatus.Perfect;
 
 		_rythmButton.image.color = Color.green;
 
@@ -104,10 +104,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	public void TappedRythmButton(){
 		print (_status);
-		_status = RythmButtonStatus.Passive;
+        ScoreManager.Instance.SendScore(_status);
+        _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
 		Destroy (circleIndicator);
-		ScoreManager.Instance.SendScore (_status);
 	}
 
 	/// <summary>
