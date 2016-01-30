@@ -11,6 +11,8 @@ GameObject:
   - 114: {fileID: 11403166}
   - 114: {fileID: 11418484}
   - 114: {fileID: 11465798}
+  - 114: {fileID: 11480022}
+  - 114: {fileID: 11498618}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -70,6 +72,37 @@ MonoBehaviour:
   audioMixerMain95: {fileID: 24318476, guid: d180686277f8a49faabc5c5d25800505, type: 2}
   audioMixerMain100: {fileID: 24386878, guid: d180686277f8a49faabc5c5d25800505, type: 2}
   audioMixerMain105: {fileID: 24317974, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+--- !u!114 &11480022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99bf6326048ebe54a86cc80c4f299b3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxLife: 100
+  NextLevel: 
+--- !u!114 &11498618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521005e52468c2541869e5c58d73f56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _passiveScore: 0
+  _perfectScore: 100
+  _greatScore: 50
+  _okScore: 20
+  _missScore: 0
+  _maxComboMultiplier: 100
+  _comboScoreMultiplier: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
