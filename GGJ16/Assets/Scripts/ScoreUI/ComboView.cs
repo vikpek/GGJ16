@@ -24,11 +24,11 @@ public class ComboView : MonoBehaviour
 
     private void Reset()
     {
-        _comboText.text = "0 x";
+        _comboText.text = "x0";
     }
 
     private void OnComboChanged(int newCombo)
     {
-        _comboText.text = newCombo.ToString() + " x";
+        _comboText.text = "x" + newCombo.ToString();
     }
 }
