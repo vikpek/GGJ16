@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 431878}
   - 114: {fileID: 11403166}
   - 114: {fileID: 11418484}
+  - 114: {fileID: 11465798}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -53,6 +54,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f9ff07f8c7f407897a9a03ec1fde0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11465798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff54c108c77004a5a86b95160252014e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixerGroup01: {fileID: 24367740, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerGroup02: {fileID: 24332042, guid: d180686277f8a49faabc5c5d25800505, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
