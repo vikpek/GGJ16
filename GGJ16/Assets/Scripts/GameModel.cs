@@ -64,6 +64,11 @@ public class GameModel
     #region Singleton
     private static GameModel instance = null;
 
+    private GameModel()
+    {
+
+    }
+
     public static GameModel Instance
     {
         get
@@ -77,12 +82,12 @@ public class GameModel
     }
     #endregion
 
-    private GameModel()
+    public void Init()
     {
         Reset();
     }
 
-    private void Reset()
+    public void Reset()
     {
         Instance.Score = 0;
         Instance.Combo = 0;

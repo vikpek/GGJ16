@@ -6,26 +6,26 @@ public class ScoreManager : MonoBehaviour
     #region Inspector
     [Header("Score Settings")]
     [SerializeField]
-    private int PassiveScore = 0;
+    private int _passiveScore = 0;
 
     [SerializeField]
-    private int PerfectScore = 100;
+    private int _perfectScore = 100;
 
     [SerializeField]
-    private int GreatScore = 50;
+    private int _greatScore = 50;
 
     [SerializeField]
-    private int OkScore = 20;
+    private int _okScore = 20;
 
     [SerializeField]
-    private int MissScore = 0;
+    private int _missScore = 0;
 
     [Header("Combo Settings")]
     [SerializeField]
-    private int MaxComboMultiplier = 100;
+    private int _maxComboMultiplier = 100;
 
     [SerializeField]
-    private float ComboScoreMultiplier = 0.1f;
+    private float _comboScoreMultiplier = 0.1f;
     #endregion
 
     #region Delegate
@@ -101,7 +101,7 @@ public class ScoreManager : MonoBehaviour
         if (rythmStatus == RythmButtonController.RythmButtonStatus.Miss)
         {
             GameModel.Instance.Combo = 0;
-            return MissScore;
+            return _missScore;
         }
 
         // Get base score
@@ -110,16 +110,16 @@ public class ScoreManager : MonoBehaviour
         switch (rythmStatus)
         {
             case RythmButtonController.RythmButtonStatus.Passive:
-                baseScore = PassiveScore;
+                baseScore = _passiveScore;
                 break;
             case RythmButtonController.RythmButtonStatus.Perfect:
-                baseScore = PerfectScore;
+                baseScore = _perfectScore;
                 break;
             case RythmButtonController.RythmButtonStatus.Great:
-                baseScore = GreatScore;
+                baseScore = _greatScore;
                 break;
             case RythmButtonController.RythmButtonStatus.Ok:
-                baseScore = OkScore;
+                baseScore = _okScore;
                 break;
             default:
                 baseScore = 0;
@@ -127,7 +127,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Calculate final score for notes
-        float scoreMultiplier = Mathf.Min(GameModel.Instance.Combo, MaxComboMultiplier) * ComboScoreMultiplier;
+        float scoreMultiplier = Mathf.Min(GameModel.Instance.Combo, _maxComboMultiplier) * _comboScoreMultiplier;
         int finalScore = (int)(baseScore * scoreMultiplier);
 
         // Return score
