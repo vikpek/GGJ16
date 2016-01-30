@@ -24,7 +24,7 @@ public class FeedbackController : MonoBehaviour {
 	}
 
 	void PopUp(){
-		transform.DOScale (transform.localScale * 1.1f, 1.6f).OnComplete (
+		transform.DOScale (transform.localScale * 0.9f, 1.6f).OnComplete (
 			() => {
 				popUpFieldInstance.transform.DOScale (transform.localScale * 0.01f, 0.2f);
 			});
