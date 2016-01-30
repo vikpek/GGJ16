@@ -29,9 +29,15 @@ public class RythmButtonController : MonoBehaviour {
 
 	private GameObject circleIndicator;
 
+	[SerializeField]
+	private AudioClip[] buttonSounds;
+
+	private AudioSource audioSource;
+
 	void Start () {
 		_rythmButton = GetComponent<Button> ();
 		_status = RythmButtonStatus.Passive;	
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	public void ActivateRythmButton(){
@@ -112,6 +118,10 @@ public class RythmButtonController : MonoBehaviour {
 		if (_status == RythmButtonStatus.Passive) {
 			ScoreManager.Instance.SendScore (RythmButtonStatus.Miss);
 		} else {
+			audioSource.clip = (AudioClip) buttonSounds [Random.Range (0, buttonSounds.Length - 1)];
+			print ("test");
+			print (audioSource.clip.length);
+			audioSource.Play ();
 			ScoreManager.Instance.SendScore (_status);
 		}
         _status = RythmButtonStatus.Passive;

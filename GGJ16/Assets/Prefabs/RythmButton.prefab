@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11465576}
   - 114: {fileID: 11489294}
   - 114: {fileID: 11496086}
+  - 82: {fileID: 8276754}
   m_Layer: 5
   m_Name: RythmButton
   m_TagString: RythmButton
@@ -19,6 +20,80 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &8276754
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121546}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11465576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,10 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057b02fd8c0b4873bab9c7ad07632c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayPerfect: 1
-  delayGreat: 2
-  delayOk: 3
-  delayMiss: 0
+  _delayPerfect: 0
+  _delayGreat: 0
+  _delayOk: 0
+  _delayMiss: 0
+  IndicatorRing: {fileID: 0}
+  buttonSounds:
+  - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
+  - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
+  - {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
+  - {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
 --- !u!222 &22292254
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -142,7 +223,55 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: buttonSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: buttonSound01
+      value: 
+      objectReference: {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSound02
+      value: 
+      objectReference: {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSound03
+      value: 
+      objectReference: {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSound04
+      value: 
+      objectReference: {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
+    - target: {fileID: 0}
+      propertyPath: buttonSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 8201540, guid: 27beb95ed7dd6487a894d855cb1e3bc7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121546}
