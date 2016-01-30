@@ -6,6 +6,9 @@ public class GameModel : MonoBehaviour
     private int MaxLife = 100;
 
     [SerializeField]
+    private int HealValue = 3;
+
+    [SerializeField]
     private int[] NextLevel;
 
     #region Properties
@@ -15,6 +18,11 @@ public class GameModel : MonoBehaviour
         get { return _combo; }
         set
         {
+            if (value > _combo)
+            {
+                Life += (value - _combo) * HealValue;
+            }
+
             _combo = value;
             if (OnComboChanged != null)
             {
@@ -45,9 +53,9 @@ public class GameModel : MonoBehaviour
         {
             if (OnLifeChanged != null)
             {
-                OnLifeChanged(_life, value, (value/MaxLife));
+                OnLifeChanged(_life, value, (value/(float)MaxLife));
             }
-            _life = value;
+            _life = Mathf.Min(MaxLife, value);
         }
     }
 

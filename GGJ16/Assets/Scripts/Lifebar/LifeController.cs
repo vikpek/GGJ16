@@ -3,7 +3,7 @@
 public class LifeController : MonoBehaviour
 {
     [SerializeField]
-    private int LifeDamage = 10;
+    private int LifeDamage = 25;
 
 	// Use this for initialization
 	void Awake ()

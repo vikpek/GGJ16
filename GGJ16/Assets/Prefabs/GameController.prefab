@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLife: 100
+  HealValue: 2
   NextLevel: 
 --- !u!114 &11498618
 MonoBehaviour:
