@@ -27,8 +27,6 @@ public class RythmButtonController : MonoBehaviour {
 	void Start () {
 		b = GetComponent<Button> ();
 		status = RythmButtonStatus.Passive;	
-		ActivateRythmButton ();
-
 	}
 
 	public void ActivateRythmButton(){
@@ -75,5 +73,10 @@ public class RythmButtonController : MonoBehaviour {
 		print (status);
 		status = RythmButtonStatus.Passive;
 		b.image.color = Color.grey;
+	}
+
+	public RythmButtonStatus GetRythmStatus()
+	{
+		return status;
 	}
 }
