@@ -15,11 +15,10 @@ public class RythmController : MonoBehaviour {
 
 	void Start(){
 		currentDuration = durationPerStage;
-		StartRythm ();
 		rythmButtons = GameObject.FindGameObjectsWithTag ("RythmButton");
 	}
 
-	void StartRythm(){
+	public void StartRythm(){
 		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
 	}
 
