@@ -12,14 +12,17 @@ public class RythmController : MonoBehaviour {
 
 	GameObject[] rythmButtons;
 
+	public delegate void StageReceived(int stage);
+	public event StageReceived OnStageReceived;
 
 	void Start(){
 		currentDuration = durationPerStage;
 		rythmButtons = GameObject.FindGameObjectsWithTag ("RythmButton");
+
 	}
 
 	public void StartRythm(){
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		StartCoroutine (ProcessStages ());
 	}
 
 	void RythmTick(){
@@ -37,10 +40,62 @@ public class RythmController : MonoBehaviour {
 			currentDuration--;
 		} else {
 			currentDuration = durationPerStage;
-			escalationSpeed -= escalationSpeed * 0.1f;
 			CancelInvoke ("RythmTick");
-			StartRythm ();
 		}
-	
 	}
+
+	IEnumerator ProcessStages()
+	{
+		print ("Stage0");
+		currentDuration = 13;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (0);
+		yield return new WaitForSeconds (13f);  
+
+		print ("Stage01");
+		currentDuration = 11;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (1);
+		yield return new WaitForSeconds (11f);  
+
+		print ("Stage02");
+		currentDuration = 22;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (2);
+		yield return new WaitForSeconds (22f);  
+
+		print ("Stage03");
+		currentDuration = 23;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (3);
+		yield return new WaitForSeconds (23f);  
+
+		print ("Stage04");
+		yield return new WaitForSeconds (25f);  
+
+
+		print ("Stage05");
+		yield return new WaitForSeconds (30f);  
+
+
+		print ("Stage06");
+		yield return new WaitForSeconds (40f);  
+
+
+		print ("Stage07");
+		yield return new WaitForSeconds (50f);  
+	}
+
+		
+	/// </summary>
+	public void SendStage(int stage)
+	{
+		// Sent event
+		if (OnStageReceived != null)
+		{
+			OnStageReceived(stage);
+		}
+	}
+
+
 }

@@ -97,6 +97,11 @@ public class RythmButtonController : MonoBehaviour {
 
 		yield return new WaitForSeconds(_delayMiss);
 		_status = RythmButtonStatus.Passive;
+
+		ScoreManager.Instance.SendScore(RythmButtonStatus.Miss);
+		_status = RythmButtonStatus.Passive;
+		_rythmButton.image.color = Color.grey;
+		Destroy (circleIndicator);
 	}
 
 	/// <summary>
@@ -104,7 +109,11 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	public void TappedRythmButton(){
 		print (_status);
-        ScoreManager.Instance.SendScore(_status);
+		if (_status == RythmButtonStatus.Passive) {
+			ScoreManager.Instance.SendScore (RythmButtonStatus.Miss);
+		} else {
+			ScoreManager.Instance.SendScore (_status);
+		}
         _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
 		Destroy (circleIndicator);
