@@ -65,8 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff54c108c77004a5a86b95160252014e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixerGroup01: {fileID: 24367740, guid: d180686277f8a49faabc5c5d25800505, type: 2}
-  audioMixerGroup02: {fileID: 24332042, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerMain85: {fileID: 24390502, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerMain90: {fileID: 24345638, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerMain95: {fileID: 24318476, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerMain100: {fileID: 24386878, guid: d180686277f8a49faabc5c5d25800505, type: 2}
+  audioMixerMain105: {fileID: 24317974, guid: d180686277f8a49faabc5c5d25800505, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
