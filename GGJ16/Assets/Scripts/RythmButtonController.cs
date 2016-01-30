@@ -27,6 +27,8 @@ public class RythmButtonController : MonoBehaviour {
 
 	private float _timeLeft;
 
+	private GameObject circleIndicator;
+
 	void Start () {
 		_rythmButton = GetComponent<Button> ();
 		_status = RythmButtonStatus.Passive;	
@@ -43,7 +45,7 @@ public class RythmButtonController : MonoBehaviour {
 	IEnumerator OkToGreat() {
 		_status = RythmButtonStatus.Perfect;
 
-		GameObject circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
+		circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
 		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = (_delayPerfect + _delayGreat + _delayOk) * 0.0004f;
 		circleIndicator.transform.parent = transform.parent;
 
@@ -59,8 +61,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to ok.</returns>
 	IEnumerator GreatToPerfect() {
-		_rythmButton.image.color = Color.yellow;
 		_status = RythmButtonStatus.Great;
+
+		_rythmButton.image.color = Color.yellow;
+
 		yield return new WaitForSeconds(_delayGreat);
 		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (PerfectToMiss ());
@@ -72,8 +76,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	/// <returns>The to miss.</returns>
 	IEnumerator PerfectToMiss() {
-		_rythmButton.image.color = Color.green;
 		_status = RythmButtonStatus.Ok;
+
+		_rythmButton.image.color = Color.green;
+
 		yield return new WaitForSeconds(_delayPerfect);
 		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (MissToPassive ());
@@ -86,7 +92,9 @@ public class RythmButtonController : MonoBehaviour {
 	/// <returns>The to passive.</returns>
 	IEnumerator MissToPassive() {
 		_status = RythmButtonStatus.Miss;
+
 		_rythmButton.image.color = Color.grey;
+
 		yield return new WaitForSeconds(_delayMiss);
 		_status = RythmButtonStatus.Passive;
 	}
@@ -98,6 +106,7 @@ public class RythmButtonController : MonoBehaviour {
 		print (_status);
 		_status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
+		Destroy (circleIndicator);
 		ScoreManager.Instance.SendScore (_status);
 	}
 

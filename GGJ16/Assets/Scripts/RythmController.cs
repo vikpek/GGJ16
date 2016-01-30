@@ -26,19 +26,19 @@ public class RythmController : MonoBehaviour {
 	void RythmTick(){
 
 //		foreach(GameObject r in rythmButtons){
-		do{
-			if (rythmButtons[Random.Range(0, rythmButtons.Length)].GetComponent<RythmButtonController> ().GetRythmStatus () == RythmButtonController.RythmButtonStatus.Passive) {
-				rythmButtons[Random.Range(0, rythmButtons.Length)].GetComponent<RythmButtonController> ().ActivateRythmButton ();
-			}
-			break;
-		}while(true);
+
+		int randomRythmButton = Random.Range (0, rythmButtons.Length);
+		if (rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().GetRythmStatus () == RythmButtonController.RythmButtonStatus.Passive) {
+			rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().ActivateRythmButton ();
+		}
+	
+		
 
 		if (currentDuration > 0) {
 			currentDuration--;
 		} else {
 			currentDuration = durationPerStage;
 			escalationSpeed -= escalationSpeed * 0.1f;
-			print(escalationSpeed);
 			CancelInvoke ("RythmTick");
 			StartRythm ();
 		}
