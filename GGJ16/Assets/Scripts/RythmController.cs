@@ -52,8 +52,6 @@ public class RythmController : MonoBehaviour {
 
 	void RythmTick(){
 
-//		foreach(GameObject r in rythmButtons){
-
 		int randomRythmButton = Random.Range (0, rythmButtons.Length);
 		if (rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().GetRythmStatus () == RythmButtonController.RythmButtonStatus.Passive) {
 			rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().ActivateRythmButton ();
