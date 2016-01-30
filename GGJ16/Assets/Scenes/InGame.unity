@@ -248,6 +248,14 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22470310, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22470310, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
   m_IsPrefabParent: 0
@@ -816,3 +824,18 @@ Transform:
   - {fileID: 256846146}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &2056843210 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 126122, guid: e16cd0479d74841c19d444697b323faf, type: 2}
+  m_PrefabInternal: {fileID: 901922862}
+--- !u!114 &2056843211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056843210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4d99461162249e88225b6cde673d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
