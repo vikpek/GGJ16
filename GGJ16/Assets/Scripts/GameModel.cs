@@ -5,6 +5,9 @@ public class GameModel
     [SerializeField]
     private int MaxLife = 100;
 
+    [SerializeField]
+    private int[] NextLevel;
+
     #region Properties
     private int _combo;
     public int Combo
@@ -48,6 +51,52 @@ public class GameModel
         }
     }
 
+    private int _creatureLevel;
+    public int CreatureLevel
+    {
+        get { return _creatureLevel; }
+        set
+        {
+            if (OnCreatureLevel != null)
+            {
+                OnCreatureLevel(_score, value);
+            }
+            _creatureLevel = value;
+        }
+    }
+
+    private int _experiencePoints;
+    public int ExperiencePoints
+    {
+        get { return _experiencePoints; }
+        set
+        {
+            // Setup values
+            int oldExperiencePoints = _experiencePoints;
+            int newExperiencePoints = value;
+            float percentage = 1.0f;
+
+            // Calculate values when a next level is available
+            if (CreatureLevel < NextLevel.Length)
+            {
+                int requiredExpForLvlUp = NextLevel[CreatureLevel];
+
+                // Cap values
+                percentage = Mathf.Min(value / requiredExpForLvlUp, 1.0f);
+                newExperiencePoints = Mathf.Min(value, requiredExpForLvlUp);
+            }
+
+            // Assign values
+            if (_experiencePoints != newExperiencePoints)
+            {
+                if (OnExperiencePointsChanged != null)
+                {
+                    OnExperiencePointsChanged(oldExperiencePoints, newExperiencePoints, percentage);
+                }
+                _experiencePoints = newExperiencePoints;
+            }
+        }
+    }
     #endregion
 
     #region Delegate
@@ -59,6 +108,12 @@ public class GameModel
 
     public delegate void LifeChanged(int oldLife, int newLife, float lifePercentage);
     public event LifeChanged OnLifeChanged;
+
+    public delegate void CreatureLevelChanged(int oldLevel, int newLevel);
+    public event CreatureLevelChanged OnCreatureLevel;
+
+    public delegate void ExperiencePointsChanged(int oldExp, int newExp, float expPercentage);
+    public event ExperiencePointsChanged OnExperiencePointsChanged;
     #endregion
 
     #region Singleton
@@ -92,5 +147,7 @@ public class GameModel
         Instance.Score = 0;
         Instance.Combo = 0;
         Instance.Life = MaxLife;
+        Instance.CreatureLevel = 1;
+        Instance.ExperiencePoints = 0;
     }
 }
