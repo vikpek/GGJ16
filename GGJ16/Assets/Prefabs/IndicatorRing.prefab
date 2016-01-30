@@ -29,8 +29,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc87a6d6afd34ff2ada3b6cb12076dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumSize: 0.1
-  _indicatorSpeed: 0.01
 --- !u!114 &11438560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +88,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _indicatorSpeed
-      value: 0.01
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minimumSize
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

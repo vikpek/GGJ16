@@ -132,11 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057b02fd8c0b4873bab9c7ad07632c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayPremature: 3
-  DelayPerfect: 1
-  DelayGreat: 2
-  DelayOk: 3
-  DelayMiss: 0
+  _delayPerfect: 2
+  _delayGreat: 3
+  _delayOk: 3
+  _delayMiss: 0
   IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
 --- !u!114 &270390829
 MonoBehaviour:
@@ -543,11 +542,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057b02fd8c0b4873bab9c7ad07632c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayPremature: 3
-  DelayPerfect: 1
-  DelayGreat: 2
-  DelayOk: 3
-  DelayMiss: 0
+  _delayPerfect: 2
+  _delayGreat: 3
+  _delayOk: 3
+  _delayMiss: 0
   IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
 --- !u!1 &1589436442
 GameObject:
@@ -596,11 +594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057b02fd8c0b4873bab9c7ad07632c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayPremature: 3
-  DelayPerfect: 1
-  DelayGreat: 2
-  DelayOk: 3
-  DelayMiss: 0
+  _delayPerfect: 2
+  _delayGreat: 3
+  _delayOk: 3
+  _delayMiss: 0
   IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
 --- !u!114 &1589436445
 MonoBehaviour:
@@ -889,11 +886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057b02fd8c0b4873bab9c7ad07632c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayPremature: 3
-  DelayPerfect: 1
-  DelayGreat: 2
-  DelayOk: 3
-  DelayMiss: 0
+  _delayPerfect: 2
+  _delayGreat: 3
+  _delayOk: 3
+  _delayMiss: 0
   IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
 --- !u!114 &2037400618
 MonoBehaviour:
