@@ -7,6 +7,9 @@ public class CreatureView : MonoBehaviour
     [SerializeField]
     private GameObject[] _creatures;
 
+    [SerializeField]
+    private GameObject _creatureChangeEffect;
+
     void Awake()
     {
         GameModel.Instance.OnCreaturelevelChanged += OnCreatureLevelChanged;
@@ -21,11 +24,26 @@ public class CreatureView : MonoBehaviour
     {
         if (newLevel <= _creatures.Length)
         {
-            for (int i = 0; i < _creatures.Length; i++)
+            float delay = 0;
+
+            if (newLevel > 1)
             {
-                GameObject creature = _creatures[i];
-                creature.SetActive(i + 1 == newLevel);
+                delay = 0.75f;
+                _creatureChangeEffect.GetComponent<Animator>().SetTrigger("Activate");
             }
+
+            StartCoroutine(UpdateCreature(newLevel, delay));
+        }
+    }
+
+    private IEnumerator UpdateCreature(int newLevel, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        for (int i = 0; i < _creatures.Length; i++)
+        {
+            GameObject creature = _creatures[i];
+            creature.SetActive(i + 1 == newLevel);
         }
     }
 }
