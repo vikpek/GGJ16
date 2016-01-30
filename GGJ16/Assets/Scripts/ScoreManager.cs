@@ -28,20 +28,9 @@ public class ScoreManager : MonoBehaviour
     private float ComboScoreMultiplier = 0.1f;
     #endregion
 
-    #region Properties
-    private int _score;
-    public int Score { get { return _score; } }
-
-    private int _combo;
-    public int Combo { get { return _combo; } }
-    #endregion
-
     #region Delegate
-    public delegate void ScoreChanged(int oldScore, int newScore);
-    public event ScoreChanged OnScoreChanged;
-
-    public delegate void ComboChanged(int newCombo);
-    public event ComboChanged OnComboChanged;
+    public delegate void ScoreReceived(RythmButtonController.RythmButtonStatus rythmStatus);
+    public event ScoreReceived OnScoreReceived;
     #endregion
 
     #region Singleton pattern
@@ -74,8 +63,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void Reset()
     {
-        _score = 0;
-        _combo = 0;
+        GameModel.Instance.Score = 0;
+        GameModel.Instance.Combo = 0;
     }
 
     /// <summary>
@@ -83,29 +72,24 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void SendScore(RythmButtonController.RythmButtonStatus rythmStatus)
     {
+        // Sent event
+        if (OnScoreReceived != null)
+        {
+            OnScoreReceived(rythmStatus);
+        }
+
         // Update combo
         if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss)
         {
-            _combo++;
+            GameModel.Instance.Combo++;
         }
         else
         {
-            _combo = 0;
-        }
-
-        if (OnComboChanged != null)
-        {
-            OnComboChanged(_combo);
+            GameModel.Instance.Combo = 0;
         }
 
         // Update score
-        int oldScore = _score;
-        _score += GetScore(rythmStatus);
-
-        if (OnScoreChanged != null)
-        {
-            OnScoreChanged(oldScore, _score);
-        }
+        GameModel.Instance.Score += GetScore(rythmStatus);
     }
 
     /// <summary>
@@ -116,7 +100,7 @@ public class ScoreManager : MonoBehaviour
         // When the player missed a note, the combo will be reseted and miss score will be sent.
         if (rythmStatus == RythmButtonController.RythmButtonStatus.Miss)
         {
-            _combo = 0;
+            GameModel.Instance.Combo = 0;
             return MissScore;
         }
 
@@ -143,7 +127,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Calculate final score for notes
-        float scoreMultiplier = Mathf.Min(_combo, MaxComboMultiplier) * ComboScoreMultiplier;
+        float scoreMultiplier = Mathf.Min(GameModel.Instance.Combo, MaxComboMultiplier) * ComboScoreMultiplier;
         int finalScore = (int)(baseScore * scoreMultiplier);
 
         // Return score
