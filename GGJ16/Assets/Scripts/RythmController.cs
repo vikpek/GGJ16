@@ -15,7 +15,32 @@ public class RythmController : MonoBehaviour {
 	public delegate void StageReceived(int stage);
 	public event StageReceived OnStageReceived;
 
-	void Start(){
+    #region Singleton pattern
+    private static RythmController instance = null;
+
+    // Game Instance Singleton
+    public static RythmController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+    #endregion
+
+    void Start(){
 		currentDuration = durationPerStage;
 		rythmButtons = GameObject.FindGameObjectsWithTag ("RythmButton");
 
