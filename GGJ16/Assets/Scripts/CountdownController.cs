@@ -17,16 +17,16 @@ public class CountdownController : MonoBehaviour {
 		showCountdown = true;    
 
 		countdown = "3";    
-		yield return new WaitForSeconds (1.5f);  
+		yield return new WaitForSeconds (1f);  
 
 		countdown = "2";    
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1f);
 
 		countdown = "1";  
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1f);
 
 		countdown = "GO"; 
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1f);
 
 		rythmController.StartRythm ();
 		showCountdown = false;
