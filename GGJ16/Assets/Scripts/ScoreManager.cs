@@ -79,11 +79,12 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Update combo
-        if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss)
+        if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss &&
+            rythmStatus != RythmButtonController.RythmButtonStatus.Passive)
         {
             GameModel.Instance.Combo++;
         }
-        else
+        else if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss)
         {
             GameModel.Instance.Combo = 0;
         }
