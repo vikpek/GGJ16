@@ -71,18 +71,30 @@ public class RythmController : MonoBehaviour {
 		yield return new WaitForSeconds (23f);  
 
 		print ("Stage04");
+		currentDuration = 25;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (4);
 		yield return new WaitForSeconds (25f);  
 
 
 		print ("Stage05");
+		currentDuration = 30;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (5);
 		yield return new WaitForSeconds (30f);  
 
 
 		print ("Stage06");
+		currentDuration = 40;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (6);
 		yield return new WaitForSeconds (40f);  
 
 
 		print ("Stage07");
+		currentDuration = 50;
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed);
+		SendStage (7);
 		yield return new WaitForSeconds (50f);  
 	}
 
