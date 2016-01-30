@@ -4,14 +4,11 @@ using UnityEngine.UI;
 
 public class RythmButtonController : MonoBehaviour {
 
-	public enum RythmButtonStatus{Passive, Premature, Perfect, Great, Ok, Miss};
+	public enum RythmButtonStatus{Passive, Perfect, Great, Ok, Miss};
 
 	private RythmButtonStatus _status;
 
 	private Button _rythmButton;
-
-	[SerializeField]
-	private float _delayPremature;
 
 	[SerializeField]
 	private float _delayPerfect;
@@ -30,47 +27,32 @@ public class RythmButtonController : MonoBehaviour {
 
 	private float _timeLeft;
 
+	private GameObject circleIndicator;
+
 	void Start () {
 		_rythmButton = GetComponent<Button> ();
 		_status = RythmButtonStatus.Passive;	
 	}
 
 	public void ActivateRythmButton(){
-		StartCoroutine (PrematureToPerfect ());
+		StartCoroutine (OkToGreat ());
 	}
-
-
-	/// <summary>
-	/// Change status Prematures to perfect.
-	/// </summary>
-	/// <returns>The to perfect.</returns>
-	IEnumerator PrematureToPerfect() {
-
-		_status = RythmButtonStatus.Premature;
-
-		GameObject circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, transform.rotation);
-//		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = DelayPremature;
-		circleIndicator.transform.parent = transform;
-
-
-		yield return new WaitForSeconds(_delayPremature);
-		if (_status != RythmButtonStatus.Passive) {
-			StartCoroutine (PerfectToGreat ());
-		}
-	}
-
 
 	/// <summary>
 	/// Status change Perfects to great.
 	/// </summary>
 	/// <returns>The to great.</returns>
-	IEnumerator PerfectToGreat() {
-		_status = RythmButtonStatus.Perfect;
+	IEnumerator OkToGreat() {
+		_status = RythmButtonStatus.Ok;
 
-		_rythmButton.image.color = Color.green;
-		yield return new WaitForSeconds(_delayPerfect);
+		circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
+		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = (_delayPerfect + _delayGreat + _delayOk) * 0.0004f;
+		circleIndicator.transform.parent = transform.parent;
+
+		_rythmButton.image.color = Color.red;
+		yield return new WaitForSeconds(_delayOk);
 		if (_status != RythmButtonStatus.Passive) {
-			StartCoroutine (GreatToOk ());
+			StartCoroutine (GreatToPerfect ());
 		}
 	}
 
@@ -78,24 +60,27 @@ public class RythmButtonController : MonoBehaviour {
 	/// Status change Greats to ok.
 	/// </summary>
 	/// <returns>The to ok.</returns>
-	IEnumerator GreatToOk() {
-		_rythmButton.image.color = Color.yellow;
+	IEnumerator GreatToPerfect() {
 		_status = RythmButtonStatus.Great;
+
+		_rythmButton.image.color = Color.yellow;
+
 		yield return new WaitForSeconds(_delayGreat);
 		if (_status != RythmButtonStatus.Passive) {
-			StartCoroutine (OkToMiss ());
+			StartCoroutine (PerfectToMiss ());
 		}
-
 	}
 
 	/// <summary>
 	/// Status Oks to miss.
 	/// </summary>
 	/// <returns>The to miss.</returns>
-	IEnumerator OkToMiss() {
-		_rythmButton.image.color = Color.red;
-		_status = RythmButtonStatus.Ok;
-		yield return new WaitForSeconds(_delayOk);
+	IEnumerator PerfectToMiss() {
+		_status = RythmButtonStatus.Perfect;
+
+		_rythmButton.image.color = Color.green;
+
+		yield return new WaitForSeconds(_delayPerfect);
 		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (MissToPassive ());
 		}
@@ -107,7 +92,9 @@ public class RythmButtonController : MonoBehaviour {
 	/// <returns>The to passive.</returns>
 	IEnumerator MissToPassive() {
 		_status = RythmButtonStatus.Miss;
+
 		_rythmButton.image.color = Color.grey;
+
 		yield return new WaitForSeconds(_delayMiss);
 		_status = RythmButtonStatus.Passive;
 	}
@@ -117,9 +104,10 @@ public class RythmButtonController : MonoBehaviour {
 	/// </summary>
 	public void TappedRythmButton(){
 		print (_status);
-		_status = RythmButtonStatus.Passive;
+        ScoreManager.Instance.SendScore(_status);
+        _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
-		ScoreManager.Instance.SendScore (_status);
+		Destroy (circleIndicator);
 	}
 
 	/// <summary>

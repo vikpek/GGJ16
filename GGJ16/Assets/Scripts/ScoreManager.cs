@@ -79,11 +79,12 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Update combo
-        if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss)
+        if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss &&
+            rythmStatus != RythmButtonController.RythmButtonStatus.Passive)
         {
             GameModel.Instance.Combo++;
         }
-        else
+        else if (rythmStatus != RythmButtonController.RythmButtonStatus.Miss)
         {
             GameModel.Instance.Combo = 0;
         }
@@ -128,7 +129,9 @@ public class ScoreManager : MonoBehaviour
 
         // Calculate final score for notes
         float scoreMultiplier = Mathf.Min(GameModel.Instance.Combo, _maxComboMultiplier) * _comboScoreMultiplier;
-        int finalScore = (int)(baseScore * scoreMultiplier);
+        int bonusScore = Mathf.RoundToInt(baseScore * scoreMultiplier);
+
+        int finalScore = baseScore + bonusScore;
 
         // Return score
         return finalScore;
