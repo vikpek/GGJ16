@@ -46,5 +46,21 @@ public class FeedbackController : MonoBehaviour {
 	private void OnScoreReceived(RythmButtonController.RythmButtonStatus status)
 	{
 		ShowPopUp (status.ToString());
-	}
+
+        switch (status)
+        {
+            case RythmButtonController.RythmButtonStatus.Perfect:
+                GameModel.Instance.PerfectCount++;
+                break;
+            case RythmButtonController.RythmButtonStatus.Great:
+                GameModel.Instance.GreatCount++;
+                break;
+            case RythmButtonController.RythmButtonStatus.Ok:
+                GameModel.Instance.OkCount++;
+                break;
+            case RythmButtonController.RythmButtonStatus.Miss:
+                GameModel.Instance.MissCount++;
+                break;
+        }
+    }
 }

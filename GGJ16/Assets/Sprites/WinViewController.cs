@@ -16,11 +16,20 @@ public class WinViewController : MonoBehaviour
     
     [SerializeField]
     private Text DescriptionText;
-
+    
     [SerializeField]
     private AnimationCurve _finalScoreScaleAnimationCurve;
 
-	public void UpdateView()
+    [SerializeField]
+    private Text PerfectText;
+    [SerializeField]
+    private Text GreatText;
+    [SerializeField]
+    private Text OkText;
+    [SerializeField]
+    private Text MissText;
+
+    public void UpdateView()
     {
         GameObject creature = CreatureView.ActiveCreature();
         creature.transform.parent = CreaturePosition;
@@ -39,6 +48,11 @@ public class WinViewController : MonoBehaviour
         {
             DescriptionText.text = "Thank's for summoning!";
         }
+
+        PerfectText.text = "Perfect\n       " + GameModel.Instance.PerfectCount + "x";
+        GreatText.text = "Great\n       " + GameModel.Instance.GreatCount + "x";
+        OkText.text = "Ok\n       " + GameModel.Instance.OkCount + "x";
+        MissText.text = "Miss\n       " + GameModel.Instance.MissCount + "x";
     }
 
     public void SwitchToStartScreen()
