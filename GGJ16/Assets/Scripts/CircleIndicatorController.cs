@@ -24,7 +24,7 @@ public class CircleIndicatorController : MonoBehaviour
         InUse = false;
     }
 
-	void Update () {
+	void FixedUpdate () {
 		if (transform.localScale.x > _minimumSize || transform.localScale.y > _minimumSize) {
 			transform.localScale -= new Vector3(_indicatorSpeed, _indicatorSpeed, _indicatorSpeed);
 		} else
