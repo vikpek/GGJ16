@@ -35,6 +35,9 @@ public class RythmButtonController : MonoBehaviour {
 
 	private AudioSource audioSource;
 
+    [SerializeField]
+    private ParticleSystem _activatedVfx;
+
 	void Start () {
 		_rythmButton = GetComponent<Button> ();
 		_status = RythmButtonStatus.Passive;	
@@ -148,6 +151,12 @@ public class RythmButtonController : MonoBehaviour {
 	public void TappedRythmButton()
     {
 		print (_status);
+        if (_status != RythmButtonStatus.Miss &&
+            _status != RythmButtonStatus.Passive)
+        {
+            //_activatedVfx.Play();
+        }
+
 		if (_status != RythmButtonStatus.Passive) {
 			audioSource.PlayOneShot ((AudioClip)audioclipsSuccessButton [Random.Range (0, audioclipsSuccessButton.Length - 1)]);
 			ScoreManager.Instance.SendScore (_status);
