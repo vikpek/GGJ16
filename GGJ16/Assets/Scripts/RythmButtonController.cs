@@ -28,7 +28,10 @@ public class RythmButtonController : MonoBehaviour {
 	private float _timeLeft;
 
 	[SerializeField]
-	private AudioClip[] buttonSounds;
+	private AudioClip[] audioclipsSuccessButton;
+
+	[SerializeField]
+	private AudioClip audioclipFailButton;
 
 	private AudioSource audioSource;
 
@@ -145,11 +148,11 @@ public class RythmButtonController : MonoBehaviour {
 	public void TappedRythmButton()
     {
 		print (_status);
-		if (_status != RythmButtonStatus.Passive)
-        {
-			audioSource.clip = (AudioClip) buttonSounds [Random.Range (0, buttonSounds.Length - 1)];
-			audioSource.Play ();
+		if (_status != RythmButtonStatus.Passive) {
+			audioSource.PlayOneShot ((AudioClip)audioclipsSuccessButton [Random.Range (0, audioclipsSuccessButton.Length - 1)]);
 			ScoreManager.Instance.SendScore (_status);
+		} else {
+			audioSource.PlayOneShot (audioclipFailButton);
 		}
         _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;

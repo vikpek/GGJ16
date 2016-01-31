@@ -1140,11 +1140,12 @@ MonoBehaviour:
   _delayOk: 0.5
   _delayMiss: 0
   circleIndicator: {fileID: 108618}
-  buttonSounds:
+  audioclipsSuccessButton:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
   - {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
   - {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+  audioclipFailButton: {fileID: 8300000, guid: 2b62eb0ffa3a34a95bd3f09c91bfef04, type: 3}
 --- !u!114 &11429474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1187,11 +1188,12 @@ MonoBehaviour:
   _delayOk: 0.5
   _delayMiss: 0
   circleIndicator: {fileID: 102514}
-  buttonSounds:
+  audioclipsSuccessButton:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
   - {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
   - {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+  audioclipFailButton: {fileID: 8300000, guid: 2b62eb0ffa3a34a95bd3f09c91bfef04, type: 3}
 --- !u!114 &11434344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1579,11 +1581,12 @@ MonoBehaviour:
   _delayOk: 0.5
   _delayMiss: 0
   circleIndicator: {fileID: 123910}
-  buttonSounds:
+  audioclipsSuccessButton:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
   - {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
   - {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+  audioclipFailButton: {fileID: 8300000, guid: 2b62eb0ffa3a34a95bd3f09c91bfef04, type: 3}
 --- !u!114 &11469534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1600,11 +1603,12 @@ MonoBehaviour:
   _delayOk: 0.5
   _delayMiss: 0
   circleIndicator: {fileID: 129058}
-  buttonSounds:
+  audioclipsSuccessButton:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
   - {fileID: 8300000, guid: 142da0af1302e46d4ac8cc4057e25c58, type: 3}
   - {fileID: 8300000, guid: 55bd2b85c5b61434a927ea74ef8c21a2, type: 3}
+  audioclipFailButton: {fileID: 8300000, guid: 2b62eb0ffa3a34a95bd3f09c91bfef04, type: 3}
 --- !u!114 &11469848
 MonoBehaviour:
   m_ObjectHideFlags: 1
