@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ComboView : MonoBehaviour
@@ -30,5 +31,13 @@ public class ComboView : MonoBehaviour
     private void OnComboChanged(int newCombo)
     {
         _comboText.text = "x" + newCombo.ToString();
+        _comboText.transform.localScale = Vector3.one;
+
+        if (newCombo != 0)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(_comboText.transform.DOScale(1.3f, 0.2f));
+            sequence.Append(_comboText.transform.DOScale(Vector3.one, 0.1f));
+        }
     }
 }
