@@ -23,11 +23,9 @@ public class RythmButtonController : MonoBehaviour {
 	private float _delayMiss;
 
 	[SerializeField]
-	private GameObject IndicatorRing;
+	private GameObject circleIndicator;
 
 	private float _timeLeft;
-
-	private GameObject circleIndicator;
 
 	[SerializeField]
 	private AudioClip[] buttonSounds;
@@ -51,11 +49,11 @@ public class RythmButtonController : MonoBehaviour {
 	IEnumerator OkToGreat() {
 		_status = RythmButtonStatus.Ok;
 
-		circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
-		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = 0.016f;
+        circleIndicator.GetComponent<CircleIndicatorController>().InUse = true;
+        circleIndicator.GetComponent<CircleIndicatorController>().IndicatorSpeed = 0.016f;
 		circleIndicator.transform.parent = transform.parent;
 
-		_rythmButton.image.color = Color.red;
+        _rythmButton.image.color = Color.red;
 		yield return new WaitForSeconds(_delayOk);
 		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (GreatToPerfect ());
@@ -138,8 +136,8 @@ public class RythmButtonController : MonoBehaviour {
 		ScoreManager.Instance.SendScore(RythmButtonStatus.Miss);
 		_status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
-		Destroy (circleIndicator);
-	}
+        circleIndicator.GetComponent<CircleIndicatorController>().InUse = false;
+    }
 
 	/// <summary>
 	/// Tappeds the rythm button.
@@ -156,8 +154,8 @@ public class RythmButtonController : MonoBehaviour {
 		}
         _status = RythmButtonStatus.Passive;
 		_rythmButton.image.color = Color.grey;
-		Destroy (circleIndicator);
-	}
+        circleIndicator.GetComponent<CircleIndicatorController>().InUse = false;
+    }
 
 	/// <summary>
 	/// Gets the rythm status.
