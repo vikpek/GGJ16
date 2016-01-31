@@ -117,10 +117,9 @@ public class RythmButtonController : MonoBehaviour {
 		print (_status);
 		if (_status == RythmButtonStatus.Passive) {
 			ScoreManager.Instance.SendScore (RythmButtonStatus.Miss);
+			GameObject.FindGameObjectWithTag ("GameController").GetComponent<ScreenshakeController> ().ScreenShake(1f, 0.4f);
 		} else {
 			audioSource.clip = (AudioClip) buttonSounds [Random.Range (0, buttonSounds.Length - 1)];
-			print ("test");
-			print (audioSource.clip.length);
 			audioSource.Play ();
 			ScoreManager.Instance.SendScore (_status);
 		}
