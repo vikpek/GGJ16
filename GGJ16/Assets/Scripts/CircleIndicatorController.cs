@@ -3,9 +3,9 @@ using System.Collections;
 
 public class CircleIndicatorController : MonoBehaviour {
 
-	private float _minimumSize = 0.01f;
+	private float _minimumSize = 0.02f;
 
-	private float _indicatorSpeed = 0.01f;
+	private float _indicatorSpeed = 0.005f;
 	public float IndicatorSpeed
 	{
 		get { return _indicatorSpeed; }

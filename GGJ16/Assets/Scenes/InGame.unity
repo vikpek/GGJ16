@@ -260,6 +260,54 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: -12.231571
       objectReference: {fileID: 0}
+    - target: {fileID: 11432984, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayGreat
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432984, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayOk
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432984, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayPerfect
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429332, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayPerfect
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468366, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayPerfect
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469534, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayPerfect
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429332, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayGreat
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468366, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayGreat
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469534, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayGreat
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429332, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayOk
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468366, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayOk
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469534, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
+      propertyPath: _delayOk
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e595044d6855544395d6c3974fdb154, type: 2}
   m_IsPrefabParent: 0
