@@ -80,28 +80,28 @@ public class RythmController : MonoBehaviour {
 
 		print ("Stage01");
 		currentDuration = 11;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.8f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.7f);
 		SendStage (1);
 		yield return new WaitForSeconds (11f);  
 		CancelInvoke ("RythmTick");
 
 		print ("Stage02");
 		currentDuration = 22;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.7f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.6f);
 		SendStage (2);
 		yield return new WaitForSeconds (22f);  
 		CancelInvoke ("RythmTick");
 
 		print ("Stage03");
 		currentDuration = 23;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.6f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.5f);
 		SendStage (3);
 		yield return new WaitForSeconds (23f);  
 		CancelInvoke ("RythmTick");
 
 		print ("Stage04");
 		currentDuration = 25;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.5f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.4f);
 		SendStage (4);
 		yield return new WaitForSeconds (25f);  
 		CancelInvoke ("RythmTick");
@@ -109,7 +109,7 @@ public class RythmController : MonoBehaviour {
 
 		print ("Stage05");
 		currentDuration = 30;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.4f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.3f);
 		SendStage (5);
 		yield return new WaitForSeconds (30f);
 		CancelInvoke ("RythmTick");
@@ -117,7 +117,7 @@ public class RythmController : MonoBehaviour {
 
 		print ("Stage06");
 		currentDuration = 40;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.3f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.2f);
 		SendStage (6);
 		yield return new WaitForSeconds (40f);  
 		CancelInvoke ("RythmTick");
@@ -125,14 +125,14 @@ public class RythmController : MonoBehaviour {
 
 		print ("Stage07");
 		currentDuration = 50;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.2f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.1f);
 		SendStage (7);
 		yield return new WaitForSeconds (50f);  
 		CancelInvoke ("RythmTick");
 
 		print ("Stage08");
 		currentDuration = 50;
-		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.1f);
+		InvokeRepeating("RythmTick", 0.0f, escalationSpeed*0.05f);
 		SendStage (8);
 		yield return new WaitForSeconds (50f);  
 		CancelInvoke ("RythmTick");
