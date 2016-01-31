@@ -10,6 +10,8 @@ public class CreatureView : MonoBehaviour
     [SerializeField]
     private GameObject _creatureChangeEffect;
 
+    private int _activeCreatureIndex;
+
     void Awake()
     {
         GameModel.Instance.OnCreaturelevelChanged += OnCreatureLevelChanged;
@@ -20,7 +22,7 @@ public class CreatureView : MonoBehaviour
     {
         if (rythmStatus == RythmButtonController.RythmButtonStatus.Miss)
         {
-            _creatureChangeEffect.GetComponent<Animator>().SetTrigger("Hurt");
+            _creatures[_activeCreatureIndex].GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
 
@@ -48,6 +50,8 @@ public class CreatureView : MonoBehaviour
     private IEnumerator UpdateCreature(int newLevel, float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        _activeCreatureIndex = newLevel - 1;
 
         for (int i = 0; i < _creatures.Length; i++)
         {

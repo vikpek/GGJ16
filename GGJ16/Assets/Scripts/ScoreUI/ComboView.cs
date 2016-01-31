@@ -7,6 +7,9 @@ public class ComboView : MonoBehaviour
     [SerializeField]
     private Text _comboText;
 
+    [SerializeField]
+    private ParticleSystem _particleSystem;
+
 	// Use this for initialization
 	void Awake ()
     {
@@ -35,6 +38,13 @@ public class ComboView : MonoBehaviour
 
         if (newCombo != 0)
         {
+
+            ParticleSystem.EmissionModule emissionModule = _particleSystem.emission;
+            emissionModule.enabled = false;
+            emissionModule.enabled = true;
+
+            _particleSystem.Play();
+
             Sequence sequence = DOTween.Sequence();
             sequence.Append(_comboText.transform.DOScale(1.3f, 0.2f));
             sequence.Append(_comboText.transform.DOScale(Vector3.one, 0.1f));
