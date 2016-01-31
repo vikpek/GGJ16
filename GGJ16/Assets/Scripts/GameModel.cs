@@ -10,6 +10,11 @@ public class GameModel : MonoBehaviour
 
     [SerializeField]
     private int[] NextLevel;
+    
+    public int PerfectCount;
+    public int GreatCount;
+    public int OkCount;
+    public int MissCount;
 
     #region Properties
     private int _combo;
@@ -155,6 +160,10 @@ public class GameModel : MonoBehaviour
 
     public void Reset()
     {
+        Instance.PerfectCount = 0;
+        Instance.GreatCount = 0;
+        Instance.OkCount = 0;
+        Instance.MissCount = 0;
         Instance.Score = 0;
         Instance.Combo = 0;
         Instance.Life = MaxLife;
