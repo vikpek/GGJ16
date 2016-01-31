@@ -1,47 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using DG.Tweening;
 
-public class CountdownController : MonoBehaviour {
-	private string countdown = "";    
-	private bool showCountdown = false;
+public class CountdownController : MonoBehaviour
+{
+    [SerializeField]
+    private Text countDownText;
 
 	private RythmController rythmController;
 
 	void Start(){
 		rythmController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<RythmController> ();
-		StartCoroutine (GetReady ());
+		StartCoroutine(GetReady());
 	}
 
-	IEnumerator GetReady ()    
+	private IEnumerator GetReady()    
 	{
-		showCountdown = true;    
 
-		countdown = "3";    
-		yield return new WaitForSeconds (1f);  
+        StartCoroutine(CountDown(3));
 
-		countdown = "2";    
-		yield return new WaitForSeconds (1f);
-
-		countdown = "1";  
-		yield return new WaitForSeconds (1f);
-
-		countdown = "GO"; 
-		yield return new WaitForSeconds (1f);
+        yield return new WaitForSeconds(3.25f);
 
 		rythmController.StartRythm ();
-		showCountdown = false;
-		countdown = "";  
 	}
-		
-	void  OnGUI ()
-	{
-		if (showCountdown)
-		{    
-			GUI.color = Color.red;    
-			GUI.Box (new Rect (Screen.width / 2 - 100, 50, 200, 175), "GET READY");
-		
-			GUI.color = Color.white;    
-			GUI.Box (new Rect (Screen.width / 2 - 90, 75, 180, 140), countdown);
-		}    
-	}
+
+    private IEnumerator CountDown(int countdown)
+    {
+        countDownText.text = countdown.ToString();
+        countDownText.transform.localScale = Vector3.one * 3f;
+        countDownText.transform.DOScale(Vector3.one, 0.33f);
+        yield return new WaitForSeconds(0.66f);
+
+        if (countdown > 1)
+        {
+            countdown--;
+            StartCoroutine(CountDown(countdown));
+        }
+        else
+        {
+            countDownText.text = "GO!";
+            countDownText.transform.localScale = Vector3.one * 3f;
+            countDownText.transform.DOScale(Vector3.one, 0.33f);
+            yield return new WaitForSeconds(0.66f);
+            countDownText.transform.localScale = Vector3.zero;
+        }
+    }
 }
