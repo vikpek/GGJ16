@@ -142,12 +142,11 @@ public class RythmButtonController : MonoBehaviour {
 	/// <summary>
 	/// Tappeds the rythm button.
 	/// </summary>
-	public void TappedRythmButton(){
+	public void TappedRythmButton()
+    {
 		print (_status);
-		if (_status == RythmButtonStatus.Passive) {
-			ScoreManager.Instance.SendScore (RythmButtonStatus.Miss);
-			GameObject.FindGameObjectWithTag ("GameController").GetComponent<ScreenshakeController> ().ScreenShake(1f, 0.4f);
-		} else {
+		if (_status != RythmButtonStatus.Passive)
+        {
 			audioSource.clip = (AudioClip) buttonSounds [Random.Range (0, buttonSounds.Length - 1)];
 			audioSource.Play ();
 			ScoreManager.Instance.SendScore (_status);
