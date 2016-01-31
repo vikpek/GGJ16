@@ -154,7 +154,7 @@ public class RythmButtonController : MonoBehaviour {
         if (_status != RythmButtonStatus.Miss &&
             _status != RythmButtonStatus.Passive)
         {
-            //_activatedVfx.Play();
+            _activatedVfx.Play();
         }
 
 		if (_status != RythmButtonStatus.Passive) {
