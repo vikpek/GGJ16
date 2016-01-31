@@ -19,14 +19,29 @@ public class FeedbackController : MonoBehaviour {
 	public void ShowPopUp(string text){
 		popUpFieldInstance = (GameObject) Instantiate (popUpField, transform.position, Quaternion.identity);
 		popUpFieldInstance.gameObject.transform.parent = transform;
-		popUpFieldInstance.GetComponent<Text>().text = text;
+
+        RectTransform popuptransform = (RectTransform) popUpFieldInstance.gameObject.transform;
+        popuptransform.offsetMin = Vector2.zero;
+        popuptransform.offsetMax = Vector2.zero;
+
+        popUpFieldInstance.gameObject.transform.localScale = Vector3.one * 0.5f;
+        popUpFieldInstance.GetComponent<Text>().text = text;
 		PopUp ();
 	}
 
-	void PopUp(){
-		transform.DOScale (transform.localScale * 0.9f, 1.6f).OnComplete (
+	void PopUp()
+    {
+        popUpFieldInstance.gameObject.transform.DOScale (1.2f, 0.5f).SetEase
+            (
+            new AnimationCurve(
+                new Keyframe(0, 0),
+                new Keyframe(0.25f, 1f),
+                new Keyframe(1, 1)
+                )
+            ).
+            OnComplete (
 			() => {
-				popUpFieldInstance.transform.DOScale (transform.localScale * 0.01f, 0.2f);
+				popUpFieldInstance.transform.DOScale (0.01f, 0.2f);
 			});
 	}
 		
