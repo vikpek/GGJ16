@@ -8,7 +8,7 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 100
   companyName: DefaultCompany
   productName: GGJ16
   defaultCursor: {fileID: 0}
@@ -89,7 +89,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.lieudennis.devilsummoning
+  bundleIdentifier: com.vikpek.devilsummoning
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0

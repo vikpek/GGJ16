@@ -53,7 +53,7 @@ public class RythmButtonController : MonoBehaviour {
 		_status = RythmButtonStatus.Ok;
 
         circleIndicator.GetComponent<CircleIndicatorController>().InUse = true;
-        circleIndicator.GetComponent<CircleIndicatorController>().IndicatorSpeed = 0.016f;
+        circleIndicator.GetComponent<CircleIndicatorController>().IndicatorSpeed = 0.032f;
 		circleIndicator.transform.parent = transform.parent;
 
         _rythmButton.image.color = Color.red;
