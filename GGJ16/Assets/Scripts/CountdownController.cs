@@ -21,11 +21,14 @@ public class CountdownController : MonoBehaviour
 	void Start(){
 		rythmController = GetComponent<RythmController> ();
 		audioSource = GetComponent<AudioSource> ();
-		StartCoroutine(GetReady());
+
+        countDownText.transform.localScale = Vector3.zero;
+        StartCoroutine(GetReady());
 	}
 
 	private IEnumerator GetReady()    
 	{
+        yield return new WaitForSeconds(0.2f);
         StartCoroutine(CountDown(3));
 
         yield return new WaitForSeconds(3.25f);
