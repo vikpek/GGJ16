@@ -931,7 +931,7 @@ MonoBehaviour:
   _delayGreat: 2
   _delayOk: 3
   _delayMiss: 0
-  IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
+  IndicatorRing: {fileID: 157550, guid: c6f1fca0e5bd7a14da12c06b793ec610, type: 2}
   buttonSounds:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   _delayGreat: 2
   _delayOk: 3
   _delayMiss: 0
-  IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
+  IndicatorRing: {fileID: 157550, guid: 3adffdef2fac5c34298c1656ee4871a0, type: 2}
   buttonSounds:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   _delayGreat: 2
   _delayOk: 3
   _delayMiss: 0
-  IndicatorRing: {fileID: 157550, guid: c99aa4f8eb9de48df9a24c45c4ea0267, type: 2}
+  IndicatorRing: {fileID: 157550, guid: 57435c3e898a326438b609d2ec261526, type: 2}
   buttonSounds:
   - {fileID: 8300000, guid: 69c3d2cf94f154410b11875eb6444e96, type: 3}
   - {fileID: 8300000, guid: dba9366d06bc74f0284ed5efe6d52157, type: 3}
