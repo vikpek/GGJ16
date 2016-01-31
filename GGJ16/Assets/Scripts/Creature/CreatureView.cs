@@ -13,6 +13,15 @@ public class CreatureView : MonoBehaviour
     void Awake()
     {
         GameModel.Instance.OnCreaturelevelChanged += OnCreatureLevelChanged;
+        ScoreManager.Instance.OnScoreReceived += OnScoreReceived;
+    }
+
+    private void OnScoreReceived(RythmButtonController.RythmButtonStatus rythmStatus)
+    {
+        if (rythmStatus == RythmButtonController.RythmButtonStatus.Miss)
+        {
+            _creatureChangeEffect.GetComponent<Animator>().SetTrigger("Hurt");
+        }
     }
 
     void OnDestroy()
