@@ -40,8 +40,10 @@ public class WinViewController : MonoBehaviour
 
         FinalScore.transform.DOScale(1.25f, 2.0f).SetEase(_finalScoreScaleAnimationCurve).SetLoops(-1);
 
+        // It's Son Goku
         if (GameModel.Instance.CreatureLevel > 8)
         {
+            creature.transform.localScale = Vector3.one * 300;
             DescriptionText.text = "It's over 9.000!!!";
         }
         else

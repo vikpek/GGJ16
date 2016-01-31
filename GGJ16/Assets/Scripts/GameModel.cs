@@ -72,7 +72,7 @@ public class GameModel : MonoBehaviour
         {
             if (OnCreaturelevelChanged != null)
             {
-                OnCreaturelevelChanged(_score, value);
+                OnCreaturelevelChanged(_creatureLevel, value);
             }
             _creatureLevel = value;
         }
