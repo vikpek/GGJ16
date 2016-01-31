@@ -53,10 +53,8 @@ public class RythmController : MonoBehaviour {
 
 		int randomRythmButton = Random.Range (0, rythmButtons.Length);
 		if (rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().GetRythmStatus () == RythmButtonController.RythmButtonStatus.Passive) {
-			rythmButtons[randomRythmButton].GetComponent<RythmButtonController> ().ActivateRythmButton ();
+			StartCoroutine (ActiveWithDelay (randomRythmButton));
 		}
-	
-		
 
 		if (currentDuration > 0) {
 			currentDuration--;
@@ -64,6 +62,11 @@ public class RythmController : MonoBehaviour {
 			currentDuration = durationPerStage;
 			CancelInvoke ("RythmTick");
 		}
+	}
+
+	IEnumerator ActiveWithDelay(int rythmButtonIndex){
+		yield return new WaitForSeconds (0.3f);  
+		rythmButtons[rythmButtonIndex].GetComponent<RythmButtonController> ().ActivateRythmButton ();
 	}
 
 	IEnumerator ProcessStages()
