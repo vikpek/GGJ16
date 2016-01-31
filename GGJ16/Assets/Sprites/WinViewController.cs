@@ -34,7 +34,7 @@ public class WinViewController : MonoBehaviour
         GameObject creature = CreatureView.ActiveCreature();
         creature.transform.parent = CreaturePosition;
         creature.transform.localPosition = Vector3.zero;
-        creature.transform.localScale = Vector3.one * 20;
+        creature.transform.localScale = Vector3.one * 30;
 
         FinalScore.text = GameModel.Instance.Score.ToString();
 
