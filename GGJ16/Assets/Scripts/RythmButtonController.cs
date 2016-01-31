@@ -52,7 +52,7 @@ public class RythmButtonController : MonoBehaviour {
 		_status = RythmButtonStatus.Ok;
 
 		circleIndicator = (GameObject) Instantiate(IndicatorRing, transform.position, Quaternion.identity);
-		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = (_delayPerfect + _delayGreat + _delayOk) * 0.0004f;
+		circleIndicator.GetComponent<CircleIndicatorController> ().IndicatorSpeed = 0.016f;
 		circleIndicator.transform.parent = transform.parent;
 
 		_rythmButton.image.color = Color.red;
@@ -73,7 +73,7 @@ public class RythmButtonController : MonoBehaviour {
 
 		yield return new WaitForSeconds(_delayGreat);
 		if (_status != RythmButtonStatus.Passive) {
-			StartCoroutine (PerfectToMiss ());
+			StartCoroutine (PerfectToGreat ());
 		}
 	}
 
@@ -81,16 +81,47 @@ public class RythmButtonController : MonoBehaviour {
 	/// Status Oks to miss.
 	/// </summary>
 	/// <returns>The to miss.</returns>
-	IEnumerator PerfectToMiss() {
+	IEnumerator PerfectToGreat() {
 		_status = RythmButtonStatus.Perfect;
 
 		_rythmButton.image.color = Color.green;
 
 		yield return new WaitForSeconds(_delayPerfect);
 		if (_status != RythmButtonStatus.Passive) {
+			StartCoroutine (GreatToOk ());
+		}
+	}
+
+	/// <summary>
+	/// Status Oks to miss.
+	/// </summary>
+	/// <returns>The to miss.</returns>
+	IEnumerator GreatToOk() {
+		_status = RythmButtonStatus.Great;
+
+		_rythmButton.image.color = Color.yellow;
+
+		yield return new WaitForSeconds(_delayGreat/2);
+		if (_status != RythmButtonStatus.Passive) {
+			StartCoroutine (OkToMiss ());
+		}
+	}
+
+	/// <summary>
+	/// Status Oks to miss.
+	/// </summary>
+	/// <returns>The to miss.</returns>
+	IEnumerator OkToMiss() {
+		_status = RythmButtonStatus.Ok;
+
+		_rythmButton.image.color = Color.red;
+
+		yield return new WaitForSeconds(_delayOk/2);
+		if (_status != RythmButtonStatus.Passive) {
 			StartCoroutine (MissToPassive ());
 		}
 	}
+
 
 	/// <summary>
 	/// Status change Misses to passive.
