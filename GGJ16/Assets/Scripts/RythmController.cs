@@ -36,7 +36,6 @@ public class RythmController : MonoBehaviour {
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
     #endregion
 

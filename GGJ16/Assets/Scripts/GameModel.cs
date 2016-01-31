@@ -145,7 +145,6 @@ public class GameModel : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()

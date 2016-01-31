@@ -54,7 +54,6 @@ public class ScoreManager : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
     #endregion
 
