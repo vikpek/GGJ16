@@ -59,4 +59,16 @@ public class CreatureView : MonoBehaviour
             creature.SetActive(i + 1 == newLevel);
         }
     }
+
+    public GameObject ActiveCreature()
+    {
+        foreach (GameObject creature in _creatures)
+        {
+            if (creature.activeSelf)
+            {
+                return creature;
+            }
+        }
+        return null;
+    }
 }

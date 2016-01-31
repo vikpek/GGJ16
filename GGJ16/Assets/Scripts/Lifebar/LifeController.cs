@@ -14,10 +14,15 @@ public class LifeController : MonoBehaviour
 	[SerializeField]
 	private AudioClip audioclipGameOver;
 
+    [SerializeField]
+    private WinViewController _winScreen;
+
 	// Use this for initialization
 	void Awake ()
     {
-		audioSource = GetComponent<AudioSource> ();
+        _winScreen.gameObject.SetActive(false);
+
+        audioSource = GetComponent<AudioSource> ();
         ScoreManager.Instance.OnScoreReceived += OnScoreReceived;
 		GameModel.Instance.OnLifeChanged += OnLifeChanged;
     }
@@ -48,7 +53,8 @@ public class LifeController : MonoBehaviour
 	}
 
 	private IEnumerator UnloadSceneWithDelay(){
-		yield return new WaitForSeconds (5);
-		SceneManager.LoadScene ("StartMenu");
-	}
+		yield return new WaitForSeconds (1);
+        _winScreen.gameObject.SetActive(true);
+        _winScreen.UpdateView();
+    }
 }
